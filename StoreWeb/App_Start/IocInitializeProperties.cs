@@ -6,6 +6,8 @@ using Autofac;
 using Autofac.Extras.Quartz;
 using Autofac.Integration.Mvc;
 using Mehdime.Entity;
+using StoreWeb.Core;
+
 namespace StoreWeb
 {
     public class IocInitializeProperties

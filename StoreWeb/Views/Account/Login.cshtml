@@ -1,63 +1,78 @@
-﻿@using StoreWeb.Models
-@model LoginViewModel
+﻿
 @{
-    ViewBag.Title = "登录";
+    Layout = null;
 }
 
-<h2>@ViewBag.Title。</h2>
-<div class="row">
-    <div class="col-md-8">
-        <section id="loginForm">
-            @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
-            {
-                @Html.AntiForgeryToken()
-                <h4>使用本地帐户登录。</h4>
-                <hr />
-                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                <div class="form-group">
-                    @Html.LabelFor(m => m.Email, new { @class = "col-md-2 control-label" })
-                    <div class="col-md-10">
-                        @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
-                        @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
-                    </div>
-                </div>
-                <div class="form-group">
-                    @Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })
-                    <div class="col-md-10">
-                        @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
-                        @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
-                    </div>
-                </div>
-                <div class="form-group">
-                    <div class="col-md-offset-2 col-md-10">
-                        <div class="checkbox">
-                            @Html.CheckBoxFor(m => m.RememberMe)
-                            @Html.LabelFor(m => m.RememberMe)
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="JuCheap" />
+    <meta name="keywords" content="JuCheap admin dashboard, admin, flat, flat ui, ui kit, app, web app, responsive" />
+    <link rel="shortcut icon" href="/Images/ico/favicon.ico" />
+    <title>Login - JuCheap</title>
+    <!--common style-->
+    @Styles.Render("~/Template/Admin/jucheap/Css/BaseStyles")
+    @Html.Partial("BaiduTongji")
+</head>
+<body class="login-body">
+    <div class="login-logo">
+        JuCheap
+    </div>
+    <h2 class="form-heading">登录</h2>
+    <div class="container log-row">
+        <form id="loginForm" class="form-signin" action="@Url.Action("Login", "Account")" method="POST">
+            <div class="login-wrap">
+                @{
+                    if (!ViewData.ModelState.IsValid)
+                    {
+                        <div class="alert alert-danger alert-dismissable">
+                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                            @string.Format("登录失败：{0}", ViewData.ModelState["Error"].Errors[0].ErrorMessage)
                         </div>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <div class="col-md-offset-2 col-md-10">
-                        <input type="submit" value="登录" class="btn btn-default" />
-                    </div>
-                </div>
-                <p>
-                    @Html.ActionLink("注册为新用户", "Register")
-                </p>
-                @* 在为密码重置功能启用帐户确认后启用此项
-                    <p>
-                        @Html.ActionLink("忘记了密码?", "ForgotPassword")
-                    </p>*@
-            }
-        </section>
-    </div>
-    <div class="col-md-4">
-        <section id="socialLoginForm">
-            @Html.Partial("_ExternalLoginsListPartial", new ExternalLoginListViewModel { ReturnUrl = ViewBag.ReturnUrl })
-        </section>
-    </div>
-</div>
+                    }
+                }
+                <input type="text" id="LoginName" name="LoginName" class="form-control" placeholder="账号" value="admin" required autofocus />
+                <input type="password" id="Password" name="Password" class="form-control" placeholder="密码" value="qwaszx" required />
 
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-}
+                <button class="btn btn-lg btn-success btn-block" type="submit">登录</button>
+                <label class="checkbox-custom check-success">
+                    <input type="checkbox" value="remember-me" id="checkbox1"> <label for="checkbox1">记住我</label>
+                    <a class="pull-right" data-toggle="modal" href="@Url.Action("Index", "User")#forgotPass"> 忘记密码?</a>
+                </label>
+                <div class="registration">
+                    没有账号?
+                    <a class="" href="#">
+                        创建账号
+                    </a>
+                </div>
+            </div>
+        </form>
+        <!-- Modal -->
+        <div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="forgotPass" class="modal fade">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title">忘记密码 ?</h4>
+                    </div>
+                    <div class="modal-body">
+                        <p>输入您的注册账号.</p>
+                        <input type="text" name="txtLoginName" placeholder="账号" autocomplete="off" class="form-control placeholder-no-fix" />
+                        <p>输入您的注册邮箱，激活账号.</p>
+                        <input type="text" name="email" placeholder="邮箱" autocomplete="off" class="form-control placeholder-no-fix" />
+                    </div>
+                    <div class="modal-footer">
+                        <button data-dismiss="modal" class="btn btn-default" type="button">取消</button>
+                        <button class="btn btn-success" type="button">提交</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- modal -->
+    </div>
+
+    @Scripts.Render("~/JS/Admin/jucheap/Login")
+</body>
+</html>

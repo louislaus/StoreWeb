@@ -7,7 +7,8 @@ namespace StoreWeb
     {
         public static void RegisterGlobalFilters(GlobalFilterCollection filters)
         {
-            filters.Add(new HandleErrorAttribute());
+            filters.Add(new CommonExceptionFilter());
+            filters.Add(new AuthFilter());
         }
     }
 }
