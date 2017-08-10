@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StoreWeb.Data", "StoreWeb.D
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StoreWeb.Entity", "StoreWeb.Entity\StoreWeb.Entity.csproj", "{0DDF4DD3-E1B9-4812-BDD6-8C3184EDB32E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StoreWeb.Services", "StoreWeb.Services\StoreWeb.Services.csproj", "{6F15EEBF-DABE-4058-9E15-5E1C62F6D29A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{0DDF4DD3-E1B9-4812-BDD6-8C3184EDB32E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0DDF4DD3-E1B9-4812-BDD6-8C3184EDB32E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0DDF4DD3-E1B9-4812-BDD6-8C3184EDB32E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6F15EEBF-DABE-4058-9E15-5E1C62F6D29A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6F15EEBF-DABE-4058-9E15-5E1C62F6D29A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6F15EEBF-DABE-4058-9E15-5E1C62F6D29A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6F15EEBF-DABE-4058-9E15-5E1C62F6D29A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
